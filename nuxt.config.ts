@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   css: ['@/assets/css/regulation-format.css'],
 
   nitro: {
-    preset: process.env.NODE_ENV === 'production' ? 'cloudflare-pages' : 'node-server'
+    preset: 'cloudflare-pages'
   },
 
   app: {
