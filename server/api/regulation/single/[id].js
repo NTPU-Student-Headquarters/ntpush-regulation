@@ -121,7 +121,7 @@ export default defineEventHandler(async (event) => {
     } else {
       // 部署後環境：用 fetch 從公開網址讀取
       
-      const fileUrl = `https://regsys.ntpusu.org/regulations/${paddedId}.txt`
+      const fileUrl = `https://cloud.ntpusu.org/regulations/${paddedId}.txt`
       const res = await fetch(fileUrl)
       if (!res.ok) throw new Error(`API 嘗試 fetch 公開的法規檔案，但發生 ${res.status} 狀況。`)
       raw = await res.text()
