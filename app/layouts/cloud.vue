@@ -40,7 +40,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col bg-slate-50 dark:bg-[#1b1b1f] text-slate-800 dark:text-slate-200 transition-colors duration-300 font-sans">
+  <!-- 加入 w-full 確保寬度佔滿 -->
+  <div class="min-h-screen flex flex-col bg-slate-50 dark:bg-[#1b1b1f] text-slate-800 dark:text-slate-200 transition-colors duration-300 font-sans overflow-x-hidden w-full">
     
     <!-- 頂部導覽列 (Sticky Header) -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-[#1b1b1f]/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
@@ -48,15 +49,18 @@ onMounted(() => {
         <div class="flex justify-between items-center h-16">
           
           <!-- Logo 與 標題 -->
-          <div class="flex items-center gap-3 cursor-pointer" @click="navigateTo('/')">
-            <div class="w-10 h-10 bg-blue-700 dark:bg-blue-600 rounded-xl flex items-center justify-center shadow-sm">
+          <div class="flex items-center gap-3 cursor-pointer min-w-0" @click="navigateTo('/')">
+            <!-- Logo 圖示 -->
+            <div class="w-10 h-10 bg-blue-700 dark:bg-blue-600 rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">
               <span class="material-symbols-rounded text-white text-2xl">cloud_circle</span>
             </div>
-            <div class="flex flex-col">
-              <h1 class="font-bold text-lg leading-tight tracking-wide text-blue-900 dark:text-blue-100">
+            
+            <!-- 文字區域 -->
+            <div class="flex flex-col min-w-0">
+              <h1 class="font-bold text-lg leading-tight tracking-wide text-blue-900 dark:text-blue-100 truncate">
                 NTPU 學生自治雲
               </h1>
-              <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium tracking-wider uppercase">
+              <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium tracking-wider uppercase truncate">
                 Internal Only
               </span>
             </div>
@@ -67,7 +71,7 @@ onMounted(() => {
             <!-- 主題切換 -->
             <button 
               @click="toggleTheme"
-              class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400"
+              class="border-0 w-10 h-10 rounded-full flex items-center justify-center bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400"
               :title="isDark ? '切換至亮色模式' : '切換至深色模式'"
             >
               <span class="material-symbols-rounded">{{ isDark ? 'light_mode' : 'dark_mode' }}</span>
@@ -108,7 +112,7 @@ onMounted(() => {
     </header>
 
     <!-- 主要內容區 -->
-    <main class="flex-grow pt-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex flex-col">
+    <main class="flex-grow pt-24 px-0 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full flex flex-col">
       <slot />
     </main>
 
