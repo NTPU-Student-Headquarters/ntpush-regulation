@@ -1,3 +1,4 @@
+<!-- app/pages/regulation/[id]/embed.vue -->
 <template>
     <div>
         <div v-if="pending" style="padding: 20px; text-align: center;">

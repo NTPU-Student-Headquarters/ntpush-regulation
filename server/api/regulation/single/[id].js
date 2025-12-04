@@ -1,3 +1,5 @@
+// server/api/regulation/single/[id].js
+
 import { readFile } from 'fs/promises'
 import path from 'path'
 import matter from 'gray-matter'
